@@ -1,7 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "list.h"
+
+typedef struct Children {
+  int value;
+  struct Children *next;
+} Children;
+
+typedef struct {
+  int size;
+  Children* start;
+} List;
 
 List create_list() {
   List list;
@@ -60,13 +69,13 @@ int remove_list_children(List *list) {
   if(value == 0) {
     list->start = current_children->next;
     list->size--;
-    memset(current_children, 0, sizeof(Children));
+    free(current_children);
   } else if(value > 0 && value < list->size) {
     for(int i = 0; i < (list->size-1); i++) {
       if((i+1) == value) {
         Children *children_to_delete = current_children->next;
         current_children->next = current_children->next->next;
-        memset(children_to_delete, 0, sizeof(Children));
+        free(children_to_delete);
         list->size--;
         system("cls");
         return 0;

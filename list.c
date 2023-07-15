@@ -54,6 +54,7 @@ int remove_list_children(List *list) {
 
   printf("--> ");
   scanf("%d", &value);
+  fflush(stdin);
 
   current_children = list->start;
   if(value == 0) {

@@ -8,6 +8,7 @@ int main() {
   do {
     printf("Menu de opcoes:\n[0] - Imprimir lista\n[1] - Adicionar item no final da lista\n[2] - Adicionar item no inicio da lista\n[3] - Remover item da lista\n[4] - Encerrar programa\n--> ");
     scanf("%d", &option);
+    fflush(stdin);
     system("cls");
 
     switch(option) {
@@ -17,12 +18,14 @@ int main() {
       case 1:
         printf("Informe um numero inteiro: ");
         scanf("%d", &value);
+        fflush(stdin);
         add_in_list(&list, value);
         system("cls");
         break;
       case 2:
         printf("Informe um numero inteiro: ");
         scanf("%d", &value);
+        fflush(stdin);
         add_in_list_start(&list, value);
         system("cls");
         break;
